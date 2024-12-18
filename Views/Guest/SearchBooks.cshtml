@@ -1,0 +1,21 @@
+﻿@model IEnumerable<BookStoreMVC.Models.BookViewModel>
+@{
+    ViewBag.Title = "Search Results";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search Results</h2>
+
+<div class="d-flex flex-wrap">
+    @foreach (var book in Model)
+    {
+        <div class="card m-2" style="width: 18rem;">
+            <img class="card-img-top" src="@book.CoverImageUrl" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@book.Title</h5>
+                <p class="card-text">Author: @book.Author</p>
+                <p class="card-text">Price: @book.Price.ToString("C")</p>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,50 @@
+﻿@{
+    var isAuthenticated = Request.IsAuthenticated;
+    var isAdmin = User.IsInRole("Admin");
+}
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <div class="container">
+        @Html.ActionLink("E-BOOK", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Cart", "Index", "Cart", null, new { @class = "nav-link" })
+                </li>
+                @if (isAdmin)
+                {
+                    <li class="nav-item">
+                        @Html.ActionLink("Admin Dashboard", "Index", "Admin", null, new { @class = "nav-link" })
+                    </li>
+                }
+            </ul>
+            <ul class="navbar-nav navbar-right">
+                @if (isAuthenticated)
+                {
+                    <li class="nav-item">
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Log Out</a>
+                        }
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        @Html.ActionLink("Register", "Register", "Account", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Log in", "Login", "Account", null, new { @class = "nav-link" })
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<BookStoreMVC.Models.CartItem>
+@{
+    ViewBag.Title = "Shopping Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="cart-container">
+    <h2>Shopping Cart</h2>
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.ErrorMessage
+        </div>
+    }
+
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th>Cover</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@item.Book.CoverImageUrl" alt="@item.Book.Title" />
+                    </td>
+                    <td>@item.Book.Title</td>
+                    <td>@item.Book.Author</td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>
+                        @item.Quantity
+                        <form action="@Url.Action("AddToCart", "Cart", new { id = item.BookID })" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-success">+</button>
+                        </form>
+                        <form action="@Url.Action("ReduceFromCart", "Cart", new { id = item.BookID })" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-warning">-</button>
+                        </form>
+                    </td>
+                    <td>@(item.Price * item.Quantity)$</td>
+                    <td>
+                        <form action="@Url.Action("RemoveFromCart", "Cart", new { id = item.BookID })" method="post">
+                            <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="cart-total">
+        Total: @Model.Sum(item => item.Price * item.Quantity).ToString("C")
+    </div>
+
+    <div class="cart-actions">
+        <form action="@Url.Action("PlaceOrder", "Cart")" method="get">
+            <button type="submit" class="btn btn-primary">Place Order</button>
+        </form>
+    </div>
+</div>

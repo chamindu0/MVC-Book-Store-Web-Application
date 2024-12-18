@@ -1,0 +1,48 @@
+﻿@model IEnumerable<BookStoreMVC.Models.BookViewModel>
+@{
+    ViewBag.Title = "View Books";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/Content/view-books.css" rel="stylesheet" />
+}
+
+<div class="view-books-container">
+    <div class="view-books-header">
+        <h2>@ViewBag.Title</h2>
+    </div>
+
+    <div class="view-books-content">
+        <table class="view-books-table">
+            <thead>
+                <tr>
+                    <th>Cover</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>ISBN</th>
+                    <th>Price</th>
+                    <th>Available Stock</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var book in Model)
+                {
+                    <tr>
+                        <td><img src="@book.CoverImageUrl" alt="@book.Title" /></td>
+                        <td>@book.Title</td>
+                        <td>@book.Author</td>
+                        <td>@book.ISBN</td>
+                        <td>@book.Price.ToString("C")</td>
+                        <td>@book.AvailableStock</td>
+                        <td>
+                            @Html.ActionLink("Edit", "EditBook", new { id = book.BookID }, new { @class = "btn btn-warning" })
+                            @Html.ActionLink("Delete", "DeleteBook", new { id = book.BookID }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

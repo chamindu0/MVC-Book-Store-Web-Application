@@ -1,0 +1,72 @@
+﻿/* Custom styles for the view books page */
+.view-books-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.view-books-header {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    .view-books-header h2 {
+        margin: 0;
+        font-size: 2em;
+    }
+
+.view-books-content {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.view-books-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+    .view-books-table th, .view-books-table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    .view-books-table th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+    }
+
+    .view-books-table img {
+        width: 50px;
+        height: 75px;
+        object-fit: cover;
+    }
+
+    .view-books-table .btn {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #ffffff;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .view-books-table .btn:hover {
+            background-color: #0056b3;
+        }

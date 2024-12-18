@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Admin Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/Content/admin-dashboard.css" rel="stylesheet" />
+}
+
+<div class="admin-dashboard-container">
+    <div class="admin-dashboard-header">
+        <h2>@ViewBag.Title</h2>
+        <p>Welcome, Admin!</p>
+    </div>
+
+    <div class="admin-dashboard-content">
+        <div class="admin-dashboard-box">
+            <h3>Manage Books</h3>
+            <p>@Html.ActionLink("Create New Book", "CreateBook", null, new { @class = "btn btn-primary" })</p>
+            <p>@Html.ActionLink("View All Books", "ListBooks", null, new { @class = "btn btn-primary" })</p>
+        </div>
+
+        <div class="admin-dashboard-box">
+            <h3>Manage Users</h3>
+            <p>@Html.ActionLink("Create New User", "CreateUser", null, new { @class = "btn btn-primary" })</p>
+            <p>@Html.ActionLink("View All Users", "ListUsers", null, new { @class = "btn btn-primary" })</p>
+        </div>
+
+        <div class="admin-dashboard-box">
+            <h3>Manage Orders</h3>
+            <p>@Html.ActionLink("View All Orders", "ListOrders", null, new { @class = "btn btn-primary" })</p>
+        </div>
+
+        <div class="admin-dashboard-box">
+            <h3>Generate Reports</h3>
+            <p>@Html.ActionLink("Generate Daily Sales Report", "GenerateDailySalesReport", "Admin", null, new { @class = "btn btn-primary" })</p>
+            <p>@Html.ActionLink("Generate Weekly Sales Report", "GenerateWeeklySalesReport", "Admin", null, new { @class = "btn btn-primary" })</p>
+            <p>@Html.ActionLink("Generate Monthly Sales Report", "GenerateMonthlySalesReport", "Admin", null, new { @class = "btn btn-primary" })</p>
+            <p>@Html.ActionLink("Generate User Report", "GenerateUserReport", "Admin", null, new { @class = "btn btn-primary" })</p>
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+﻿@model BookStoreMVC.Models.BookViewModel
+
+<div class="card book-card">
+    <img class="card-img-top" src="@Model.CoverImageUrl" alt="@Model.Title">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">Author: @Model.Author</p>
+        <p class="card-text">Price: @Model.Price.ToString("C")</p>
+        <p class="card-text">Quantity: @Model.AvailableStock</p>
+        <form action="@Url.Action("AddToCart", "Cart", new { id = Model.BookID })" method="post">
+            <button type="submit" class="btn btn-primary">Add to Cart</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+﻿@model BookStoreMVC.Models.Order
+@{
+    ViewBag.Title = "Place Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Place Order</h2>
+
+<p>Total Amount: @Model.TotalAmount.ToString("C")</p>
+
+@using (Html.BeginForm("PlaceOrder", "Cart", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ShippingAddress, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.ShippingAddress, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.ShippingAddress, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+ 
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CardNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CardNumber, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CardNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CardHolderName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CardHolderName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CardHolderName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ExpiryDate, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.ExpiryDate, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.ExpiryDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CVV, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CVV, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CVV, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value=" Pay " class="btn btn-primary" />
+        </div>
+    </div>
+}

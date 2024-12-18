@@ -1,0 +1,93 @@
+﻿/* Custom styles for the admin dashboard */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+}
+
+.admin-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.admin-dashboard-header {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: #343a40;
+    color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    .admin-dashboard-header h2 {
+        margin: 0;
+        font-size: 2em;
+    }
+
+.admin-dashboard-content {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.admin-dashboard-box {
+    flex: 1 1 calc(33.333% - 20px);
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .admin-dashboard-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .admin-dashboard-box h3 {
+        margin-bottom: 15px;
+        color: #343a40;
+        font-size: 1.5em;
+    }
+
+    .admin-dashboard-box p {
+        margin-bottom: 10px;
+    }
+
+    .admin-dashboard-box a {
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+        .admin-dashboard-box a:hover {
+            color: #0056b3;
+        }
+
+    .admin-dashboard-box .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #ffffff;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 1em;
+    }
+
+        .admin-dashboard-box .btn:hover {
+            background-color: #0056b3;
+        }

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BookStoreMVC.Models.UserViewModel>
+@{
+    ViewBag.Title = "View Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/Content/view-users.css" rel="stylesheet" />
+}
+
+<div class="view-users-container">
+    <div class="view-users-header">
+        <h2>@ViewBag.Title</h2>
+    </div>
+
+    <div class="view-users-content">
+        <table class="view-users-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Name</td>
+                        <td>@user.Email</td>
+                        <td>@user.Role</td>
+                        <td>
+                            @Html.ActionLink("Edit", "EditUser", new { id = user.UserID }, new { @class = "btn btn-warning" })
+                            @Html.ActionLink("Delete", "DeleteUser", new { id = user.UserID }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

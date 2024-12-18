@@ -1,0 +1,64 @@
+﻿@model BookStoreMVC.Models.SalesReportViewModel
+@{
+    ViewBag.Title = "Sales Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/Content/report.css" rel="stylesheet" />
+}
+
+<div class="report-container">
+    <div class="report-header">
+        <h2>Sales Report</h2>
+        <p>Report Date: @Model.ReportDate.ToString("MM/dd/yyyy")</p>
+    </div>
+
+    <div class="report-summary">
+        <p>Total Sales: @Model.TotalSales.ToString("C")</p>
+        <p>Total Orders: @Model.TotalOrders</p>
+    </div>
+
+    <div class="report-details">
+        <h3>Order Details</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Order Date</th>
+                    <th>Total Amount</th>
+                    <th>Payment Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model.OrderDetails)
+                {
+                    <tr>
+                        <td>@order.OrderID</td>
+                        <td>@order.OrderDate.ToString("MM/dd/yyyy")</td>
+                        <td>@order.TotalAmount.ToString("C")</td>
+                        <td>@order.PaymentStatus</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @if (ViewBag.ReportType == "Daily")
+    {
+        <br />
+        <p>@Html.ActionLink("Export Daily Sales Report to CSV", "ExportSalesReportToCSV", "Admin", new { startDate = ViewBag.StartDate, endDate = ViewBag.EndDate }, new { @class = "btn btn-secondary" })</p>
+
+    }
+    @if (ViewBag.ReportType == "Weekly")
+    {
+        <br />
+        <p>@Html.ActionLink("Export Weekly Sales Report to CSV", "ExportSalesReportToCSV", "Admin", new { startDate = ViewBag.StartDate, endDate = ViewBag.EndDate }, new { @class = "btn btn-secondary" })</p>
+
+    }
+    @if (ViewBag.ReportType == "Monthly")
+    {
+        <br />
+        <p>@Html.ActionLink("Export Monthly Sales Report to CSV", "ExportSalesReportToCSV", "Admin", new { startDate = ViewBag.StartDate, endDate = ViewBag.EndDate }, new { @class = "btn btn-secondary" })</p>
+
+    }
+</div>

@@ -1,0 +1,54 @@
+﻿@model BookStoreMVC.Models.BookViewModel
+@{
+    ViewBag.Title = "Edit Book";
+}
+
+<h2>Edit Book</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(m => m.BookID)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Author, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Author, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Author, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ISBN, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.ISBN, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ISBN, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Price, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.AvailableStock, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.AvailableStock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.AvailableStock, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CoverImageUrl, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.CoverImageUrl, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CoverImageUrl, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+}

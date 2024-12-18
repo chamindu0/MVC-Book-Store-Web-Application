@@ -1,0 +1,48 @@
+﻿@model BookStoreMVC.Models.UserReportViewModel
+@{
+    ViewBag.Title = "User Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/Content/report.css" rel="stylesheet" />
+}
+
+<div class="report-container">
+    <div class="report-header">
+        <h2>User Report</h2>
+        <p>Report Date: @Model.ReportDate.ToString("MM/dd/yyyy")</p>
+    </div>
+
+    <div class="report-details">
+        <h3>User Details</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Order Count</th>
+                    <th>Total Spent</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Users)
+                {
+                    <tr>
+                        <td>@user.UserID</td>
+                        <td>@user.Name</td>
+                        <td>@user.Email</td>
+                        <td>@user.Role</td>
+                        <td>@user.OrderCount</td>
+                        <td>@user.TotalSpent.ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    
+    <p>@Html.ActionLink("Export User Report to CSV", "ExportUserReportToCSV", "Admin", null, new { @class = "btn btn-secondary" })</p>
+</div>

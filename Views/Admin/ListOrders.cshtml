@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BookStoreMVC.Models.Order>
+@{
+    ViewBag.Title = "View Orders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/Content/view-orders.css" rel="stylesheet" />
+}
+
+<div class="view-orders-container">
+    <div class="view-orders-header">
+        <h2>@ViewBag.Title</h2>
+    </div>
+
+    <div class="view-orders-content">
+        <table class="view-orders-table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>User ID</th>
+                    <th>Order Date</th>
+                    <th>Total Amount</th>
+                    <th>Payment Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>@order.OrderID</td>
+                        <td>@order.UserID</td>
+                        <td>@order.OrderDate.ToString("MM/dd/yyyy")</td>
+                        <td>@order.TotalAmount.ToString("C")</td>
+                        <td>@order.PaymentStatus</td>
+                        <td>
+                            @Html.ActionLink("Edit", "EditOrder", new { id = order.OrderID }, new { @class = "btn btn-warning" })
+                            @Html.ActionLink("Delete", "DeleteOrder", new { id = order.OrderID }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

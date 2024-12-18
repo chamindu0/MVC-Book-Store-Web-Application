@@ -1,0 +1,52 @@
+﻿/* Custom styles for the order confirmation page */
+.order-confirmation-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.order-confirmation-box {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+    .order-confirmation-box h2 {
+        margin-bottom: 20px;
+        color: #007bff;
+    }
+
+    .order-confirmation-box p {
+        margin-bottom: 10px;
+    }
+
+    .order-confirmation-box .alert {
+        margin-bottom: 20px;
+    }
+
+    .order-confirmation-box table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    .order-confirmation-box th, .order-confirmation-box td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    .order-confirmation-box th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+    }
